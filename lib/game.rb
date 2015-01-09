@@ -16,13 +16,11 @@ class Game
   end
 
   def computer_choice
-    :rock
-    # @rules.keys.sample.
+    :scissors
+    # @rules.keys.sample
   end
 
   def turn_result(player_1_choice = @player_choice, player_2_choice = computer_choice)
-    p player_1_choice
-    p player_2_choice
     if player_1_choice == player_2_choice
       "It's a draw! You both chose #{player_1_choice.to_s.capitalize}"
     elsif player_2_choice == @rules[player_1_choice]
