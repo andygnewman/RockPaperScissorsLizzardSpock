@@ -1,0 +1,14 @@
+
+
+/*body {
+  color: yellow;
+}*/
+
+#container {
+  background-color: DeepSkyBlue;
+  font-family: Verdana, Geneva, sans-serif;
+  width: 600px;
+  padding: 25px;
+  border: 3px solid navy;
+  margin: 25px;
+}

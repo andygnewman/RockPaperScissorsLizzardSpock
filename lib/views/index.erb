@@ -1,13 +1,69 @@
-<%= GAME.possible_values %>
-<p></p>
-<%= "Your choice was #{@choice}" if @choice != nil %>
-<p></p>
-<%= @result %>
-<p></p>
-<%= "Current Scores: Player 1 #{@player_1_score}  Player 2 #{@player_2_score}" %>
-<p></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>r:p:s</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="andy_style.css">
+  </head>
+  <body>
+    <section id="container">
+      <header>This is the header
+        <!-- <a href="#" class="logo" alt="Super. Company. Logo."><img src="images/logo.png"></a> -->
+      </header>
+      <section class="slider">
+        <img src="images/hero.jpg">
+        <h2 class="slider_title"><%= GAME.possible_values %><br><span>with our amazing product</span></h2>
+      </section>
+      <%= "Your choice was #{@choice}" if @choice != nil %>
+      <p></p>
+      <%= @result %>
+      <p></p>
+      <%= "Current Scores: Player 1 #{@player_1_score}  Player 2 #{@player_2_score}" %>
+      <p></p>
+      <form action='/'>
+        Please enter your choice: <input type="text" name="choice"> 
+        <input type="submit" value="submit">
+      </form>
+ <!--      <h1>Header 1</h1>
+      <p>content</p>
+      <h2>Header 2</h2>
+      <p>content</p>
+      <h3>Header 3</h3>
+      <p>content</p> -->
+ <!--      <img src="images/profile_1.png" class="team_pic">
+      <img src="images/profile_2.png" class="team_pic">
+      <img src="images/profile_3.png" class="team_pic">
+      <h4>Header 4</h4>
+      <p>content</p>
+      <h5>Header 5</h5>
+      <p>content</p>
+      <h6>Header 6</h6>
+      <p>content</p> -->
+      <!-- Simple form which will send a GET request -->
+    <!--   <form action="">
+        <label for="GET-first_name">First Name:</label>
+        <input id="GET-first_name" type="text" name="First name">
+        <label for="GET-name">Name:</label>
+        <input id="GET-name" type="text" name="name">
+        <label for="GET-name">Name:</label>
+        <input id="GET-name" type="text" name="name">
+        <input type="submit" value="Save">
+      </form> -->
 
-<form action='/'>
-  Please enter your choice: <input type="text" name="choice"> 
-  <input type="submit" value="submit">
-</form>
+      <!-- Form with fieldset, legend, and label -->
+   <!--    <form action="" method="post">
+        <fieldset>
+          <legend>Title</legend>
+          <input type="radio" name="radio" id="radio"> <label for="radio">Click me</label>
+          <input type="radio" name="radio" id="radio"> <label for="radio">Click me</label>
+          <input type="radio" name="radio" id="radio"> <label for="radio">Click me</label>
+        </fieldset>
+      </form> -->
+      <footer>
+        <small>Copyright 2015 intial.digital</small>
+      </footer>
+  </section>
+  </body>
+</html>
+
