@@ -9,9 +9,9 @@ class Rps < Sinatra::Base
     if params[:choice]
       GAME.player_choice = params[:choice].downcase.to_sym
       @result = GAME.turn_result
+      @choice = params[:choice]
     else
       @result =nil
-      @choice = params[:choice]
     end
     @player_1_score = GAME.player_1_score
     @player_2_score = GAME.player_2_score

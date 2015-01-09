@@ -10,6 +10,11 @@
   margin: 25px;
 }
 
+.click_image {
+  height: 8em%;
+  width: 8em;
+}
+
 header {
   color: purple;
   font-size: 2em
