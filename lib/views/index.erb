@@ -1,0 +1,13 @@
+<%= GAME.possible_values %>
+<p></p>
+<%= "Your choice was #{@choice}" if @choice != nil %>
+<p></p>
+<%= @result %>
+<p></p>
+<%= "Current Scores: Player 1 #{@player_1_score}  Player 2 #{@player_2_score}" %>
+<p></p>
+
+<form action='/'>
+  Please enter your choice: <input type="text" name="choice"> 
+  <input type="submit" value="submit">
+</form>
