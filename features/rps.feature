@@ -17,4 +17,10 @@ Feature: Rock, Paper, Scissors
   And I click on "submit"
   Then I should see "Andy chose rock"
 
+  Scenario: Entering an invalid choice
+  Given I am on the homepage
+  When I fill in "choice" with "Banana"
+  And I click on "submit"
+  Then I should see "Banana is not valid, please choose again"
+
   

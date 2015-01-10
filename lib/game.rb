@@ -27,6 +27,13 @@ class Game
     end
   end
 
+  def enter_choice(player_name, choice)
+    choice_symbol = choice.downcase.to_sym
+    raise "#{choice} is not valid, please choose again" unless @rules.keys.include?(choice_symbol)
+    player_object = @players.select{ |p| p[:name] == player_name}.first
+    player_object[:choice] = choice_symbol
+  end
+
   def turn_result
     computer_choice if player2[:name] == "Computer"
     if player1[:choice] == player2[:choice]

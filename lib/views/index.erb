@@ -19,9 +19,10 @@
       <p></p>
       <%= @result %>
       <p></p>
-      <%= "Current Scores: #{GAME.players[0][:name]}: #{@p1_score}  #{GAME.players[1][:name]} #{@p2_score}" %>
+      <%= "Current Scores: #{@p1_name}: #{@p1_score}  #{@p2_name} #{@p2_score}" %>
       <p></p>
       <% if @p1_name != "Player 1" %>
+        <%= @error %>
         <form action='/'>
           Please enter your choice: <input type="text" name="choice"> 
           <input type="submit" value="submit">
@@ -33,6 +34,9 @@
         </form>
       <% end %>  
       <a href='/' alt="Rock"><img class="click_image" src="images/Letter_r.svg"></a>
+      <a href='/' alt="Rock"><img class="click_image" src="images/Letter_p.svg"></a>
+      <a href='/' alt="Rock"><img class="click_image" src="images/Letter_s.svg"></a>
+
  <!--      <h1>Header 1</h1>
       <p>content</p>
       <h2>Header 2</h2>

@@ -3,20 +3,28 @@ require_relative 'game'
 
 class Rps < Sinatra::Base
   
+  enable :sessions
+
   GAME = Game.new
 
-  get '/' do
-    GAME.players[0][:name] = params[:p1_name] if params[:p1_name]
+  get '/?:error?' do
+    session[:player_name] = GAME.players[0][:name] = params[:p1_name] if params[:p1_name]
     if params[:choice]
-      GAME.players[0][:choice] = params[:choice].downcase.to_sym
+      begin
+        GAME.enter_choice(session[:player_name], params[:choice])
+      rescue => error
+        session[:error] = error.to_s
+        redirect '/error'
+      end
       @result = GAME.turn_result
       @choice = params[:choice]
     else
       @result =nil
     end
-    @p1_name, @p2_name = GAME.players[0][:name], GAME.players[1][:name]
-    @p1_choice, @p2_choice = GAME.choice_display(GAME.players[0][:choice]), GAME.choice_display(GAME.players[1][:choice])
-    @p1_score, @p2_score = GAME.players[0][:score], GAME.players[1][:score]
+    @error = session[:error] if params[:error]
+    @p1_name, @p2_name = GAME.player1[:name], GAME.player2[:name]
+    @p1_choice, @p2_choice = GAME.choice_display(GAME.player1[:choice]), GAME.choice_display(GAME.player2[:choice])
+    @p1_score, @p2_score = GAME.player1[:score], GAME.player2[:score]
     erb :index 
   end
 
