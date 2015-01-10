@@ -2,13 +2,11 @@ require 'active_support/all'
 
 class Game
 
-  attr_accessor :player_choice, :player_1_score, :player_2_score
+  attr_accessor :players
 
   def initialize
     @rules = {rock: :scissors, paper: :rock, scissors: :paper}
-    @player_choice = 'You haven\'t chosen anything yet'
-    @player_1_score = 0
-    @player_2_score = 0
+    @players = [{name: "Player 1", score: 0, choice: nil}, {name: "Computer", score:0, choice: nil }]
   end
 
   def possible_values
@@ -16,19 +14,28 @@ class Game
   end
 
   def computer_choice
-    :scissors
-    # @rules.keys.sample
+    # players[1][:choice] = :scissors
+    players[1][:choice] = @rules.keys.sample
   end
 
-  def turn_result(player_1_choice = @player_choice, player_2_choice = computer_choice)
-    if player_1_choice == player_2_choice
-      "It's a draw! You both chose #{player_1_choice.to_s.capitalize}"
-    elsif player_2_choice == @rules[player_1_choice]
-      @player_1_score += 1
-      "Player 1 wins; #{player_1_choice.to_s.capitalize} beats #{player_2_choice.to_s.capitalize}"
+  def choice_display(choice_symbol)
+    if choice_symbol == nil
+      "Nothing chosen yet"
     else
-      @player_2_score += 1
-      "Player 2 wins; #{player_2_choice.to_s.capitalize} beats #{player_1_choice.to_s.capitalize}"
+      choice_symbol.to_s
+    end
+  end
+
+  def turn_result
+    computer_choice if players[1][:name] == "Computer"
+    if players[0][:choice] == players[1][:choice]
+      "It's a draw! You both chose #{choice_display(players[0][:choice])}"
+    elsif players[1][:choice] == @rules[players[0][:choice]]
+      players[0][:score] += 1
+      "#{players[0][:name]} wins; #{choice_display(players[0][:choice])} beats #{choice_display(players[1][:choice])}!"
+    else
+      players[1][:score] += 1
+      "#{players[1][:name]} wins; #{choice_display(players[1][:choice])} beats #{choice_display(players[0][:choice])}!"
     end
   end
 

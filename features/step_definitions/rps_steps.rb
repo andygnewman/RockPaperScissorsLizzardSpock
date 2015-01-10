@@ -13,3 +13,9 @@ end
 And(/^I click on "([^\"]*)"$/) do |button|
   click_on(button)
 end
+
+Given(/^I have filled in a name for Player 1$/) do
+  visit '/'
+  fill_in("p1_name", :with => "Andy")
+  click_on("submit")
+end

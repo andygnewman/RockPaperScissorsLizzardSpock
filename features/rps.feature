@@ -7,10 +7,14 @@ Feature: Rock, Paper, Scissors
   Given I am on the homepage
   Then I should see "Rock, Paper, Scissors"
 
-  Scenario: Entering a choice
+  Scenario: Before starting a game
   Given I am on the homepage
+  Then I should see "Please enter a name for Player 1"
+
+  Scenario: Entering a choice
+  Given I have filled in a name for Player 1
   When I fill in "choice" with "Rock"
   And I click on "submit"
-  Then I should see "Your choice was Rock"
+  Then I should see "Andy chose rock"
 
   
