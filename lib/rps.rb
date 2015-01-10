@@ -16,7 +16,7 @@ class Rps < Sinatra::Base
     end
     @p1_name, @p2_name = GAME.players[0][:name], GAME.players[1][:name]
     @p1_choice, @p2_choice = GAME.choice_display(GAME.players[0][:choice]), GAME.choice_display(GAME.players[1][:choice])
-    @p1_score, @p2_score = GAME.players[0][:score], GAME.players[0][:score]
+    @p1_score, @p2_score = GAME.players[0][:score], GAME.players[1][:score]
     erb :index 
   end
 
