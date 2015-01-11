@@ -19,6 +19,14 @@ class Rps < Sinatra::Base
       GAME.player2[:name] = params[:player_2_name] if params[:player_2_name] && (params[:play_against_the_computer] == nil)
       session[:current_turn] = GAME.player1[:name]
     end
+    @error = session[:error] if params[:error]
+    @current_turn = session[:current_turn]
+    @p1_name, @p2_name = GAME.player1[:name], GAME.player2[:name]
+    @p1_score, @p2_score = GAME.player1[:score], GAME.player2[:score]
+    erb :index 
+  end
+
+  post '/?:error?' do
     if params[:choice]
       begin
         GAME.enter_choice(session[:current_turn], params[:choice])
