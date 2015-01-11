@@ -11,7 +11,7 @@ describe Game do
     end
 
     it 'should raise an error if an invalid option is entered' do
-      expect{game.enter_choice("Player 1","banana")}.to raise_error('That option is not valid, please choose again')
+      expect{game.enter_choice("Player 1","banana")}.to raise_error('banana is not valid, please choose again')
     end
 
   end

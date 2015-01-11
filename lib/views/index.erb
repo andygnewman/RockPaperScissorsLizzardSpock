@@ -9,18 +9,13 @@
   <body>
     <section id="container">
       <header>..r beats s beats p beats r..
-        <!-- <a href="#" class="logo" alt="Super. Company. Logo."><img src="images/logo.png"></a> -->
       </header>
       <section class="slider">
-        <!-- <img src="images/hero.jpg"> -->
         <h2 class="slider_title"><%= GAME.possible_values %><br><span>..just because you may be bored</span></h2>
       </section>
-      <%= "#{@p1_name} chose #{@p1_choice}, #{@p2_name} chose #{@p2_choice}" if @choice != nil %>
-      <p></p>
-      <%= @result %>
-      <p></p>
-      <%= "Current Scores: #{@p1_name}: #{@p1_score}  #{@p2_name} #{@p2_score}" %>
-      <p></p>
+      <%= "#{@p1_name} chose #{@p1_choice}, #{@p2_name} chose #{@p2_choice}" if @choice != nil %><br>
+      <%= @result %><br>
+      <%= "Current Scores: #{@p1_name}: #{@p1_score}  #{@p2_name}: #{@p2_score}" %><br>
       <% if @p1_name != "Player 1" %>
         <%= @error %>
         <form action='/'>
@@ -29,13 +24,15 @@
         </form>
       <% else %>
         <form action='/'>
-          Please enter a name for Player 1: <input type="text" name="p1_name"> 
+          Please enter a name for Player 1: <input type="text" name="player_1_name"><br> 
+          Please enter a name for Player 2: <input type="text" name="player_2_name">
+          <input type="checkbox" checked="checked" name="play_against_the_computer"> Play against the computer.<br>
           <input type="submit" value="submit">
         </form>
-      <% end %>  
+      <% end %><br>  
       <a href='/' alt="Rock"><img class="click_image" src="images/Letter_r.svg"></a>
-      <a href='/' alt="Rock"><img class="click_image" src="images/Letter_p.svg"></a>
-      <a href='/' alt="Rock"><img class="click_image" src="images/Letter_s.svg"></a>
+      <a href='/' alt="Paper"><img class="click_image" src="images/Letter_p.svg"></a>
+      <a href='/' alt="Scissors"><img class="click_image" src="images/Letter_s.svg"></a>
 
  <!--      <h1>Header 1</h1>
       <p>content</p>

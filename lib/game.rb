@@ -47,4 +47,8 @@ class Game
     end
   end
 
+  def reset_game
+    @players = [@player1 = {name: "Player 1", score: 0, choice: nil}, @player2 = {name: "Computer", score:0, choice: nil }]
+  end
+
 end

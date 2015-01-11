@@ -7,11 +7,17 @@ class Rps < Sinatra::Base
 
   GAME = Game.new
 
+  get '/new_game' do
+    GAME.reset_game
+    erb :index
+  end
+
   get '/?:error?' do
-    session[:player_name] = GAME.players[0][:name] = params[:p1_name] if params[:p1_name]
+    GAME.player1[:name] = session[:player_1_name] = params[:player_1_name] if params[:player_1_name]
+    GAME.player2[:name] = session[:player_2_name] = params[:player_2_name] if params[:player_2_name] && params[:play_against_the_computer] == nil
     if params[:choice]
       begin
-        GAME.enter_choice(session[:player_name], params[:choice])
+        GAME.enter_choice(session[:player_1_name], params[:choice])
       rescue => error
         session[:error] = error.to_s
         redirect '/error'

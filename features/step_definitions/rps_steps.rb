@@ -16,6 +16,12 @@ end
 
 Given(/^I have filled in a name for Player 1$/) do
   visit '/'
-  fill_in("p1_name", :with => "Andy")
+  fill_in("player_1_name", :with => "Andy")
   click_on("submit")
 end
+
+Given(/^I have reset the game$/) do
+  visit '/new_game'
+  visit '/'
+end
+  
