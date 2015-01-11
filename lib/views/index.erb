@@ -12,17 +12,18 @@
       </header>
       <section class="slider">
         <h2 class="slider_title"><%= GAME.possible_values %><br><span>..just because you may be bored</span></h2>
+        <a href="/new_game"> Reset Game </a>
       </section>
       <!-- displaying turn result -->
       <%= "#{@p1_name} chose #{@p1_choice}, #{@p2_name} chose #{@p2_choice}" if @p1_choice != nil %><br>
       <%= @result %><br>
       <%= "Current Scores: #{@p1_name}: #{@p1_score}  #{@p2_name}: #{@p2_score}" %><br>
       <!-- manages whether to display game choice entry or player name entry -->
-      <% if @p1_name != "Player 1" %><br>
+      <% if @p1_name != "Player 1" %>
         <%= @error %> <!-- displays error of invalid choice if invalid on previous entry -->
         <!-- entering choice of rock, paper, scissors -->      
         <form action='/'>
-          <%= #{@p1_name} %>, please enter your choice: <input type="text" name="choice"> 
+          <%= @current_turn %>, please enter your choice: <input type="text" name="choice"> 
           <input type="submit" value="submit">
         </form>
       <% else %>

@@ -52,7 +52,7 @@ class Game
   end
 
   def who_chooses(current_player_name)
-    
+
   end
 
 end
