@@ -51,4 +51,8 @@ class Game
     @players = [@player1 = {name: "Player 1", score: 0, choice: nil}, @player2 = {name: "Computer", score:0, choice: nil }]
   end
 
+  def who_chooses(current_player_name)
+    
+  end
+
 end

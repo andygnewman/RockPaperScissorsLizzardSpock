@@ -13,17 +13,26 @@ class Rps < Sinatra::Base
   end
 
   get '/?:error?' do
-    GAME.player1[:name] = session[:player_1_name] = params[:player_1_name] if params[:player_1_name]
-    GAME.player2[:name] = session[:player_2_name] = params[:player_2_name] if params[:player_2_name] && params[:play_against_the_computer] == nil
+    if params[:player_1_name]
+      GAME.player1[:name] = session[:player_1_name] = params[:player_1_name]
+      GAME.player2[:name] = session[:player_2_name] = params[:player_2_name] if params[:player_2_name] && (params[:play_against_the_computer] == nil)
+      session[:current_turn] = GAME.player1[:name]
+    end
     if params[:choice]
       begin
-        GAME.enter_choice(session[:player_1_name], params[:choice])
+        GAME.enter_choice(session[:current_turn], params[:choice])
       rescue => error
         session[:error] = error.to_s
         redirect '/error'
       end
-      @result = GAME.turn_result
-      @choice = params[:choice]
+      if (session[:current_turn] == session[:player_1_name]) && (session[:player_2_name] == "Computer")
+        @result = GAME.turn_result
+      elsif (session[:current_turn] == session[:player_1_name]) && (session[:player_2_name] != "Computer")
+        session[:current_turn] = session[:player_2_name]
+        redirect '/'
+      else
+        @result = GAME.turn_result
+      end
     else
       @result =nil
     end

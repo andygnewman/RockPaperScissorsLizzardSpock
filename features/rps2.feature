@@ -15,3 +15,9 @@ Feature: Two player verison
   And I uncheck "play_against_the_computer"
   And I click on "submit"
   Then I should see "Current Scores: Andy: 0 Rachel: 0"
+
+  Scenario: Making choice for second player
+  Given I have registered two players for the game
+  When I fill in "choice" with "Rock"
+  And I click on "submit"
+  Then I should see "Rachel, please enter your choice"
