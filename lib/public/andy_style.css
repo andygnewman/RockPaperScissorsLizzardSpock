@@ -1,12 +1,12 @@
 
 
 #container {
-  background-color: DeepSkyBlue;
-  font-family: Verdana, Geneva, sans-serif;
+  background-color: white;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 100%;
   width: 60%;
   padding: 25px;
-  border: 3px solid navy;
+  border: 3px solid black;
   margin: 25px;
 }
 

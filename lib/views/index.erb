@@ -1,48 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>r:p:s</title>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="andy_style.css">
-  </head>
-  <body>
-    <section id="container">
-      <header><img class="click_image" src="images/Pierre_ciseaux_feuille_lézard_spock_aligned.svg">
-        <h2 class="slider_title"><%= GAME.possible_values %><br>..just because you may be bored</h2>
-      </header>
-      <a href="/new_game"> Reset Game </a><br>
-      <!-- displaying turn result -->
-      <p class="result"><%= "#{@p1_name} chose #{@p1_choice}, #{@p2_name} chose #{@p2_choice}" if @p1_choice != nil %></p>
-      <p class="result"><%= @result %></p>
-      <p class="scores"><%= "Current Scores: #{@p1_name}: #{@p1_score}  #{@p2_name}: #{@p2_score}" %></p>
-      <p class="error"><%= @error %></p> <!-- displays error of invalid choice if invalid on previous entry -->
-      <!-- manages whether to display game choice entry or player name entry -->
-      <% if @p1_name != "Player 1" %>
-        <!-- entering choice of rock, paper, scissors -->      
-        <form class="name_form" action='/' method="post">
-          <%= @current_turn %>, please enter your choice: <input type="text" name="choice"> 
-          <input type="submit" value="submit">
-        </form>
-      <% else %>
-        <!-- entering player names -->
-        <form action='/'>
-          <fieldset>
-            <legend>Player Registration</legend>
-            <label for="player_1_name">Please enter a name for Player 1:</label>
-            <input type="text" name="player_1_name"><br>
-            <label for="player_2_name">Please enter a name for Player 2:</label>
-            <input type="text" name="player_2_name"><br>
-            <input type="checkbox" checked="checked" name="play_against_the_computer">
-            <label for="play_against_the_computer">Play against the computer.</label><br>
-            <input type="submit" value="submit">
-          </fieldset>
-        </form>
-      <% end %><br>  
-      <footer>
-        <small>2015 Andy Newman</small>
-      </footer>
-  </section>
-  </body>
-</html>
-
+<!-- manages whether to display game choice entry or player name entry -->
+<% if @p1_name != "Player 1" %>
+  <!-- entering choice of rock, paper, scissors, lizzard or spock -->      
+  <%= erb :_player_choice %>
+<% else %>
+  <!-- entering player names -->
+  <%= erb :_player_registration %>
+<% end %>

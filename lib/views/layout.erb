@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>r:p:s</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="andy_style.css">
+  </head>
+  <body>
+    <section id="container">
+      <header><img class="click_image" src="images/Pierre_ciseaux_feuille_lézard_spock_aligned.svg">
+        <h2 class="slider_title"><%= GAME.possible_values %><br>..just because you may be bored</h2>
+      </header>
+      <a href="/new_game">Reset Game</a><br>
+      <!-- displaying turn result -->
+      <p class="result"><%= "#{@p1_name} chose #{@p1_choice}, #{@p2_name} chose #{@p2_choice}" if @p1_choice != nil %></p>
+      <p class="result"><%= @result %></p>
+      <p class="scores"><%= "Current Scores: #{@p1_name}: #{@p1_score}  #{@p2_name}: #{@p2_score}" %></p>
+      <p class="error"><%= @error %></p> <!-- displays error of invalid choice if invalid on previous entry -->
+      <!-- manages whether to display game choice entry or player name entry -->
+        <%= yield %>
+      <footer>
+        <small>2015 Andy Newman</small>
+      </footer>
+  </section>
+  </body>
+</html>
+

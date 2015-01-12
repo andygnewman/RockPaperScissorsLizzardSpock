@@ -1,0 +1,5 @@
+  <form action='/' method="post">
+  <% GAME.rules.keys.map(&:to_s).each do |choice| %>
+  <input type="image" src="images/<%="#{choice}"%>.png" alt="<%=choice%>" width="150" height="150" name="choice" value="<%="#{choice}"%>"/>
+    <% end %>
+  </form>
