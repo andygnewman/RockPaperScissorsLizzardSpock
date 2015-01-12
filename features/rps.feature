@@ -19,15 +19,14 @@ Feature: Initial Task - Rock, Paper, Scissors
 
   Scenario: Entering a choice
   Given I have filled in a name for Player 1
-  When I fill in "choice" with "Rock"
-  And I click on "submit"
+  When I click on "rock"
   Then I should see "Andy chose rock"
 
-  Scenario: Entering an invalid choice
-  Given I am on the homepage
-  When I fill in "choice" with "Banana"
-  And I click on "submit"
-  Then I should see "Banana is not valid, please choose again"
+  #Scenario: Entering an invalid choice - scenario deprecated as with images can't select an invalid option
+  #Given I am on the homepage
+  #When I fill in "choice" with "Banana"
+  #And I click on "submit"
+  #Then I should see "Banana is not valid, please choose again"
 
 
 

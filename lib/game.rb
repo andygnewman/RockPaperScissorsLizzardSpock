@@ -34,10 +34,8 @@ class Game
   end
 
   def enter_choice(player_name, choice)
-    choice_symbol = choice.downcase.to_sym
-    raise "#{choice} is not valid, please choose again" unless @rules.keys.include?(choice_symbol)
     player_object = @players.select{ |p| p[:name] == player_name}.first
-    player_object[:choice] = choice_symbol
+    player_object[:choice] = choice.to_sym
   end
 
   def turn_result
@@ -55,10 +53,6 @@ class Game
 
   def reset_game
     @players = [@player1 = {name: "Player 1", score: 0, choice: nil}, @player2 = {name: "Computer", score:0, choice: nil }]
-  end
-
-  def who_chooses(current_player_name)
-
   end
 
 end

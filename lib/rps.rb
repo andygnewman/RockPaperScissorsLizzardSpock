@@ -31,12 +31,7 @@ class Rps < Sinatra::Base
   end
 
   post '/?:error?' do
-    begin
-      GAME.enter_choice(session[:current_turn], params[:choice])
-    rescue => error
-      session[:error] = error.to_s
-      redirect '/error'
-    end
+    GAME.enter_choice(session[:current_turn], params[:choice])
     if GAME.player2[:name] == "Computer"
       @result = GAME.turn_result
       @p1_choice, @p2_choice = GAME.choice_display(GAME.player1[:choice]), GAME.choice_display(GAME.player2[:choice])

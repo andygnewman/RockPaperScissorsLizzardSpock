@@ -26,14 +26,11 @@ Feature: Two player verison
 
   Scenario: Making choice for second player
   Given I have registered two players for the game
-  When I fill in "choice" with "Rock"
-  And I click on "submit"
-  Then I should see "Rachel, please enter your choice"
+  When I click on "rock"
+  Then I should see "Rachel, please make your selection"
 
   Scenario: evaluating the winner from a 2 player game
   Given I have registered two players for the game
-  When I fill in "choice" with "Paper"
-  And I click on "submit"
-  And I fill in "choice" with "Scissors"
-  And I click on "submit"
+  When I click on "paper"
+  And I click on "scissors"
   Then I should see "Rachel wins"
