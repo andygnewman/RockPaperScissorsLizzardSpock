@@ -1,8 +1,6 @@
 #Rock Paper Scissors
 ##Makers Academy Weekly Challenge - Week 3
 
-###Rōnin Badge Test
-
 Knowing how to build web applications is getting us almost there as web developers!
 
 The Makers Academy Marketing Array ( **MAMA** ) have asked us to provide a game for them. Their daily grind is pretty tough and they need time to steam a little.
@@ -32,3 +30,14 @@ Use the _special_ rules ( _you can find them here http://en.wikipedia.org/wiki/R
 - Rock beats Scissors
 - Scissors beats Paper
 - Paper beats Rock
+
+##Andy's Notes
+
+Completed all levels of the challenge.
+
+To play, rackup and go to localhost suggested by rackup.
+
+What I would do further to this?
+- Set the choices as image buttons that return the result rather than typing in your choice.
+- Allow players to play in different sessions.
+- Improve the styling
