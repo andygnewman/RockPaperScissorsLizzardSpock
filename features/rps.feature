@@ -5,10 +5,16 @@ Feature: Initial Task - Rock, Paper, Scissors
 
   Scenario: Starting the game
   Given I am on the homepage
-  Then I should see "Rock, Paper, Scissors"
+  Then I should see "Rock, Paper, Scissors, Lizzard, Spock"
 
   Scenario: Before starting a game
   Given I am on the homepage
+  Then I should see "Please enter a name for Player 1"
+
+  Scenario: Entering an invalid name for Player 1
+  Given I am on the homepage
+  When I fill in "player_1_name" with ""
+  And I click on "submit"
   Then I should see "Please enter a name for Player 1"
 
   Scenario: Entering a choice

@@ -59,6 +59,15 @@ describe Game do
       expect(game.player2[:score]).to eq(0)
     end
 
+    it 'should tell me player 2 wins with Spock, Lizzard' do
+      game.player1[:choice] = :spock
+      game.player2[:name] = "Player 2"
+      game.player2[:choice] = :lizzard
+      expect(game.turn_result[0,12]).to eq("Player 2 win")
+      expect(game.player1[:score]).to eq(0)
+      expect(game.player2[:score]).to eq(1)
+    end
+
   end
 
 end

@@ -16,6 +16,14 @@ Feature: Two player verison
   And I click on "submit"
   Then I should see "Current Scores: Andy: 0 Rachel: 0"
 
+  Scenario: Entering an invalid name for Player 2
+  Given I have reset the game
+  And I am on the homepage
+  And I have filled in "player_1_name" with "Andy" and "player_2_name" with "Rachel"
+  And I uncheck "play_against_the_computer"
+  And I click on "submit"
+  Then I should see "Current Scores: Andy: 0 Rachel: 0"
+
   Scenario: Making choice for second player
   Given I have registered two players for the game
   When I fill in "choice" with "Rock"
