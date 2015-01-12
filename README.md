@@ -37,7 +37,6 @@ Completed all levels of the challenge.
 
 To play, rackup and go to localhost suggested by rackup.
 
-What I would do further to this?
-- Set the choices as image buttons that return the result rather than typing in your choice.
-- Allow players to play in different sessions.
-- Improve the styling
+Following code review I;
+- implemented layout and partials to improve readability of the code associated with the html
+- moved to image input of choices from text based (reduces error opportunity and makes it more playable)
