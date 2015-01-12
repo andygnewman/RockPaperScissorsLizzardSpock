@@ -9,18 +9,16 @@
   <body>
     <section id="container">
       <header><img class="click_image" src="images/Pierre_ciseaux_feuille_lézard_spock_aligned.svg">
+        <h2 class="slider_title"><%= GAME.possible_values %><br>..just because you may be bored</h2>
       </header>
-      <section class="slider">
-        <h2 class="slider_title"><%= GAME.possible_values %><br><span>..just because you may be bored</span></h2>
-        <a href="/new_game"> Reset Game </a>
-      </section>
+      <a href="/new_game"> Reset Game </a><br>
       <!-- displaying turn result -->
       <%= "#{@p1_name} chose #{@p1_choice}, #{@p2_name} chose #{@p2_choice}" if @p1_choice != nil %><br>
       <%= @result %><br>
       <%= "Current Scores: #{@p1_name}: #{@p1_score}  #{@p2_name}: #{@p2_score}" %><br>
+      <section class="error"><%= @error %></section> <!-- displays error of invalid choice if invalid on previous entry -->
       <!-- manages whether to display game choice entry or player name entry -->
       <% if @p1_name != "Player 1" %>
-        <%= @error %> <!-- displays error of invalid choice if invalid on previous entry -->
         <!-- entering choice of rock, paper, scissors -->      
         <form action='/' method="post">
           <%= @current_turn %>, please enter your choice: <input type="text" name="choice"> 

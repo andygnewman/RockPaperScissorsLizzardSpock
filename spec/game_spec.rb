@@ -4,10 +4,23 @@ describe Game do
 
   let(:game) {Game.new}
 
+  context 'setting up player names' do
+
+    it 'should raise an error if player 1 name is blank' do
+      expect{game.enter_names("","Computer",true)}.to raise_error('You must enter a name for Player 1')
+    end
+
+    it 'should raise an error if player 2 name is blank and not playing against computer' do
+      expect{game.enter_names("Andy","",false)}.to raise_error('You must enter a name for Player 2')
+    end
+
+  end
+
+
   context 'offering the options' do
 
-    it 'should return 3 possible options' do
-      expect(game.possible_values).to eq("Rock, Paper, Scissors")
+    it 'should return 5 possible options' do
+      expect(game.possible_values).to eq("Rock, Paper, Scissors, Lizzard, Spock")
     end
 
     it 'should raise an error if an invalid option is entered' do
@@ -15,7 +28,6 @@ describe Game do
     end
 
   end
-
   
   context 'evaluating who won each turn and the scores' do
 

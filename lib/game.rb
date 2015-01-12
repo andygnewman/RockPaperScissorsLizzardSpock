@@ -10,13 +10,19 @@ class Game
     @players = [@player1 = {name: "Player 1", score: 0, choice: nil}, @player2 = {name: "Computer", score:0, choice: nil }]
   end
 
+  def enter_names(player_1_name, player_2_name, player_2_as_computer = false)
+    raise 'You must enter a name for Player 1' if player_1_name == ''
+    raise 'You must enter a name for Player 2' if player_2_name == '' && player_2_as_computer == false
+    @player1[:name] = player_1_name
+    @player2[:name] = player_2_name if player_2_as_computer == false
+  end
+
   def possible_values
     @rules.keys.map(&:to_s).map(&:capitalize).join(", ").to_s
   end
 
   def computer_choice
-    player2[:choice] = :scissors
-    # player2[:choice] = @rules.keys.sample
+    player2[:choice] = @rules.keys.sample
   end
 
   def choice_display(choice_symbol)
