@@ -30,6 +30,19 @@
   margin-right: auto;  
 }
 
+.result {
+  font-size: 1em;
+}
+
+.scores {
+  font-size: 1em;
+  color: green;
+}
+
+.name_form {
+  
+}
+
 header {
   font-size: 0.5em;
 }
@@ -45,6 +58,7 @@ label {
   margin-right:1em;
   text-align:right;
   font-size: 0.95em;
+  padding: 10px;
 }
 
 legend {
@@ -53,4 +67,10 @@ legend {
   color:navy;
   font-size:0.75em;
   text-align:left;
+}
+
+input {
+  margin: 8px;
+  border-color: navy;
+  border-width: 2px;
 }
