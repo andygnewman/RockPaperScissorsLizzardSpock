@@ -17,8 +17,16 @@ class Game
     @player2[:name] = player_2_name if player_2_as_computer == false
   end
 
-  def possible_values
+  def possible_values_display
     @rules.keys.map(&:to_s).map(&:capitalize).join(", ").to_s
+  end
+
+  def possible_values_array
+    @rules.keys.map(&:to_s)
+  end
+
+  def switch_players(current_player_name)
+    @players.reject{ |p| p[:name] == current_player_name}.first[:name]
   end
 
   def computer_choice

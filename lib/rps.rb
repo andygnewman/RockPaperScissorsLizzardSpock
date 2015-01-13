@@ -36,12 +36,12 @@ class Rps < Sinatra::Base
       @result = GAME.turn_result
       @p1_choice, @p2_choice = GAME.choice_display(GAME.player1[:choice]), GAME.choice_display(GAME.player2[:choice])
     elsif session[:current_turn] == GAME.player1[:name]
-      session[:current_turn] = GAME.player2[:name]
+      session[:current_turn] = GAME.switch_players(session[:current_turn])
       redirect '/'
     else
       @result = GAME.turn_result
       @p1_choice, @p2_choice = GAME.choice_display(GAME.player1[:choice]), GAME.choice_display(GAME.player2[:choice])
-      session[:current_turn] = GAME.player1[:name]
+      session[:current_turn] = GAME.switch_players(session[:current_turn])
     end
     @current_turn = session[:current_turn]
     @p1_name, @p2_name = GAME.player1[:name], GAME.player2[:name]
