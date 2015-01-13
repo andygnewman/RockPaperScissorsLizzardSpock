@@ -35,8 +35,19 @@ Use the _special_ rules ( _you can find them here http://en.wikipedia.org/wiki/R
 
 Completed all levels of the challenge.
 
-To play, rackup and go to localhost suggested by rackup.
+###To play the game
+from command line $ ruby ./lib/rps.rb
 
-Following code review I;
+###Following code review I;
 - implemented layout and partials to improve readability of the code associated with the html
 - moved to image input of choices from text based (reduces error opportunity and makes it more playable)
+- moved remaining process out of rps controller into game where the game logic resides
+- 
+###What more I would do
+- improve front end display formatting, especially where optional fields are not returned.
+- 
+###Learning points
+- separation of flow control / game logic
+- layout file to manage overall html formatting
+- minimising session variables
+- use of partials to make code more readable
