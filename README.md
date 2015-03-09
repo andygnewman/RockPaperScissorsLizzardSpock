@@ -16,7 +16,7 @@ First solo challenge on incorporating browser and server side Ruby utilising the
 - Cucumber
 - Capybara
 
-![Andy Newman's Rock Paper Scissors Lizzard Spock game screenshot]()
+![Andy Newman's Rock Paper Scissors Lizzard Spock game screenshot](https://github.com/andygnewman/RockPaperScissorsLizzardSpock/blob/master/Rock%20Paper%20Scissors%20Lizzard%20Spock%20Screenshot.png)
 
 ###To play the game
 From command line, within the root of the project directory `$ rackup`. This will start the server.
