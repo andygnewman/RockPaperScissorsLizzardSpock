@@ -20,15 +20,11 @@ describe Game do
   context 'offering the options' do
 
     it 'should return 5 possible options' do
-      expect(game.possible_values).to eq("Rock, Paper, Scissors, Lizzard, Spock")
-    end
-
-    xit 'should raise an error if an invalid option is entered' do
-      expect{game.enter_choice("Player 1","banana")}.to raise_error('banana is not valid, please choose again')
+      expect(game.possible_values_display).to eq("Rock, Paper, Scissors, Lizzard, Spock")
     end
 
   end
-  
+
   context 'evaluating who won each turn and the scores' do
 
     it 'should tell me it\'s a draw if player and computer choose the same option' do
