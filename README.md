@@ -1,9 +1,44 @@
-#Rock Paper Scissors
-##Makers Academy Weekly Challenge - Week 3
+# Rock Paper Scissors
 
-Knowing how to build web applications is getting us almost there as web developers!
+## Makers Academy Weekly Challenge - Week 3
 
-The Makers Academy Marketing Array ( **MAMA** ) have asked us to provide a game for them. Their daily grind is pretty tough and they need time to steam a little.
+Solo weekend coding challenge from Makers Academy in which I completed all levels of the challenge, including optional bonus requirements.
+First solo challenge on incorporating browser and server side Ruby utilising the Sinatra framework.
+
+###Technology Used
+
+- Ruby
+- Sinatra
+- embedded Ruby
+- HTML
+- CSS
+- Rspec
+- Cucumber
+- Capybara
+
+![Andy Newman's Rock Paper Scissors Lizzard Spock game screenshot]()
+
+###To play the game
+From command line, within the root of the project directory `$ rackup`. This will start the server.
+Then in browser open [http://localhost:9292](http://localhost:9292).
+
+###To run the tests
+From the command line, within the root of the directory;
+Unit Tests (Rspec) `$ rspec`
+Feature Tests (Cucumber / Capybara) `$ cucumber`
+
+###Learning points
+- separation of flow control / game logic between controller (rps.rb) and backend code (game.rb)
+- layout file to manage overall html formatting
+- minimising session variables
+- use of partials to make client side code more readable
+
+###What more I would do
+- improve front end display formatting, especially where optional fields are not returned, to improve consistency of user experience.
+
+### Requirements of the challenge - by Makers Academy
+
+The Makers Academy Marketing Array ( **MAMA** ) have asked us to provide a game for them.
 
 Your task is to provide a _Rock, Paper, Scissors_ game for them so they can play on the web with the following features:
 
@@ -12,8 +47,6 @@ Your task is to provide a _Rock, Paper, Scissors_ game for them so they can play
 - the marketeer can choose one option
 - the game will choose a random option
 - a winner will be declared
-
-As always you can use google your notes and everything else. This is a challenge for you and you only!
 
 ###Rōnin BANZAI!!!!**
 
@@ -30,24 +63,3 @@ Use the _special_ rules ( _you can find them here http://en.wikipedia.org/wiki/R
 - Rock beats Scissors
 - Scissors beats Paper
 - Paper beats Rock
-
-##Andy's Notes
-
-Completed all levels of the challenge.
-
-###To play the game
-from command line $ ruby ./lib/rps.rb
-
-###Following code review I;
-- implemented layout and partials to improve readability of the code associated with the html
-- moved to image input of choices from text based (reduces error opportunity and makes it more playable)
-- moved remaining process out of rps controller into game where the game logic resides
-- 
-###What more I would do
-- improve front end display formatting, especially where optional fields are not returned.
-- 
-###Learning points
-- separation of flow control / game logic
-- layout file to manage overall html formatting
-- minimising session variables
-- use of partials to make code more readable
