@@ -20,4 +20,8 @@ class Player
     @choice = choice.to_sym
   end
 
+  def choice_string
+    choice.to_s
+  end
+
 end

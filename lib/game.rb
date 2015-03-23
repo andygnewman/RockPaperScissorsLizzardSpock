@@ -32,23 +32,15 @@ class Game
   def turn_result
     computer_choice if player2.name == "Computer"
     if player1.choice == player2.choice
-      "It's a draw! You both chose #{choice_display(player1.choice)}"
+      "It's a draw! You both chose #{player1.choice_string}"
     elsif @rules[player1.choice].include?(player2.choice)
       player1.add_win_score
-      "#{player1.name} wins; #{choice_display(player1.choice)} beats
-        #{choice_display(player2.choice)}!"
+      "#{player1.name} wins; #{player1.choice_string} beats
+        #{player2.choice_string}!"
     else
       player2.add_win_score
-      "#{player2.name} wins; #{choice_display(player2.choice)} beats
-        #{choice_display(player1.choice)}!"
-    end
-  end
-
-  def choice_display(choice_symbol)
-    if choice_symbol == nil
-      "Nothing chosen yet"
-    else
-      choice_symbol.to_s
+      "#{player2.name} wins; #{player2.choice_string} beats
+        #{player1.choice_string}!"
     end
   end
 
@@ -65,14 +57,14 @@ class Game
   end
 
   def reset_game
-    @players = [@player1 = {name: "Player 1", score: 0, choice: nil},
-      @player2 = {name: "Computer", score:0, choice: nil }]
+    @players = [@player1 = Player.new("Player 1"),
+                @player2 = Player.new("Computer")]
   end
 
   private
 
   def computer_choice
-    player2[:choice] = @rules.keys.sample
+    player2.set_choice(@rules.keys.sample)
   end
 
   def set_player_name(player, player_name)

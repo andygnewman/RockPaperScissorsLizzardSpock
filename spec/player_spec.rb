@@ -1,6 +1,6 @@
 require "player"
 
-describe "player" do
+describe Player do
 
   attr_accessor :player
 
