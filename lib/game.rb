@@ -6,13 +6,18 @@ class Game
   attr_reader :players, :rules
 
   def initialize
-    @rules = {rock: [:scissors, :lizzard], paper: [:rock, :spock], scissors: [:paper, :lizzard], lizzard: [:spock, :paper], spock: [:scissors, :rock]}
-    @players = [@player1 = {name: "Player 1", score: 0, choice: nil}, @player2 = {name: "Computer", score:0, choice: nil }]
+    @rules = {rock: [:scissors, :lizzard], paper: [:rock, :spock],
+      scissors: [:paper, :lizzard], lizzard: [:spock, :paper],
+      spock: [:scissors, :rock]}
+    @players = [@player1 = {name: "Player 1", score: 0, choice: nil},
+      @player2 = {name: "Computer", score:0, choice: nil }]
   end
 
-  def enter_names(player_1_name, player_2_name, player_2_as_computer = false)
+  def enter_names(player_1_name, player_2_name, play_against_the_computer)
+    player_2_as_computer = computer_opponent(play_against_the_computer)
     raise 'You must enter a name for Player 1' if player_1_name == ''
-    raise 'You must enter a name for Player 2' if player_2_name == '' && player_2_as_computer == false
+    raise 'You must enter a name for Player 2' if player_2_name == '' &&
+      player_2_as_computer == false
     @player1[:name] = player_1_name
     @player2[:name] = player_2_name if player_2_as_computer == false
   end
@@ -52,15 +57,22 @@ class Game
       "It's a draw! You both chose #{choice_display(player1[:choice])}"
     elsif @rules[player1[:choice]].include?(player2[:choice])
       player1[:score] += 1
-      "#{player1[:name]} wins; #{choice_display(player1[:choice])} beats #{choice_display(player2[:choice])}!"
+      "#{player1[:name]} wins; #{choice_display(player1[:choice])} beats
+        #{choice_display(player2[:choice])}!"
     else
       player2[:score] += 1
-      "#{player2[:name]} wins; #{choice_display(player2[:choice])} beats #{choice_display(player1[:choice])}!"
+      "#{player2[:name]} wins; #{choice_display(player2[:choice])} beats
+        #{choice_display(player1[:choice])}!"
     end
   end
 
   def reset_game
-    @players = [@player1 = {name: "Player 1", score: 0, choice: nil}, @player2 = {name: "Computer", score:0, choice: nil }]
+    @players = [@player1 = {name: "Player 1", score: 0, choice: nil},
+      @player2 = {name: "Computer", score:0, choice: nil }]
+  end
+
+  def computer_opponent(play_against_the_computer)
+    play_against_the_computer == "on" ? true : false
   end
 
 end

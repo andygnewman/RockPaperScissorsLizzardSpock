@@ -2,7 +2,7 @@ require 'sinatra/base'
 require_relative 'game'
 
 class Rps < Sinatra::Base
-  
+
   enable :sessions
 
   GAME = Game.new
@@ -14,20 +14,21 @@ class Rps < Sinatra::Base
 
   get '/?:error?' do
     if params[:player_1_name]
-      params[:play_against_the_computer] == "on" ? player_2_as_computer = true : player_2_as_computer = false
+      # params[:play_against_the_computer] == "on" ? player_2_as_computer = true : player_2_as_computer = false
       begin
-        GAME.enter_names(params[:player_1_name], params[:player_2_name], player_2_as_computer)
+        GAME.enter_names(params[:player_1_name], params[:player_2_name],
+        params[:play_against_the_computer])
       rescue => error
         session[:error] = error.to_s
         redirect '/error'
-      end        
+      end
       session[:current_turn] = GAME.player1[:name]
     end
     @error = session[:error] if params[:error]
     @current_turn = session[:current_turn]
     @p1_name, @p2_name = GAME.player1[:name], GAME.player2[:name]
     @p1_score, @p2_score = GAME.player1[:score], GAME.player2[:score]
-    erb :index 
+    erb :index
   end
 
   post '/?:error?' do
@@ -46,7 +47,7 @@ class Rps < Sinatra::Base
     @current_turn = session[:current_turn]
     @p1_name, @p2_name = GAME.player1[:name], GAME.player2[:name]
     @p1_score, @p2_score = GAME.player1[:score], GAME.player2[:score]
-    erb :index 
+    erb :index
   end
 
   # start the server if ruby file executed directly
