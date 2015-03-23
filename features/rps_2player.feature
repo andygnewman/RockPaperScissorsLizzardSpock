@@ -8,7 +8,7 @@ Feature: Two player verison
   And I am on the homepage
   Then I should see "Please enter a name for Player 2"
 
-  Scenario: See player 2 set-up
+  Scenario: Entering a valid name for player 2
   Given I have reset the game
   And I am on the homepage
   And I have filled in "player_1_name" with "Andy" and "player_2_name" with "Rachel"
@@ -19,10 +19,17 @@ Feature: Two player verison
   Scenario: Entering an invalid name for Player 2
   Given I have reset the game
   And I am on the homepage
-  And I have filled in "player_1_name" with "Andy" and "player_2_name" with "Rachel"
+  And I have filled in "player_1_name" with "Andy" and "player_2_name" with ""
   And I uncheck "play_against_the_computer"
   And I click on "submit"
-  Then I should see "Current Scores: Andy: 0 Rachel: 0"
+  Then I should see "You must enter a name for Player 2"
+
+  Scenario: Entering a valid name for Player 2 but not unchecking play against computer
+  Given I have reset the game
+  And I am on the homepage
+  And I have filled in "player_1_name" with "Andy" and "player_2_name" with "Rachel"
+  And I click on "submit"
+  Then I should see "Current Scores: Andy: 0 Computer: 0"
 
   Scenario: Making choice for second player
   Given I have registered two players for the game

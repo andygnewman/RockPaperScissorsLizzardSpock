@@ -24,4 +24,3 @@ Given(/^I have reset the game$/) do
   visit '/new_game'
   visit '/'
 end
-  

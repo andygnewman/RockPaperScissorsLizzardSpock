@@ -1,6 +1,6 @@
 require 'active_support/all'
-require 'player'
-require 'rules'
+require_relative 'player'
+require_relative 'rules'
 
 class Game
 
