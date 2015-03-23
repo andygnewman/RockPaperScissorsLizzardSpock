@@ -1,5 +1,6 @@
 require 'active_support/all'
 require 'player'
+require 'rules'
 
 class Game
 
@@ -7,9 +8,7 @@ class Game
   attr_reader :players, :rules, :player1, :player2, :curr_plyr_name
 
   def initialize
-    @rules = {rock: [:scissors, :lizzard], paper: [:rock, :spock],
-      scissors: [:paper, :lizzard], lizzard: [:spock, :paper],
-      spock: [:scissors, :rock]}
+    @rules = Rules.new
     @players = [@player1 = Player.new("Player 1"),
                 @player2 = Player.new("Computer")]
   end
@@ -29,11 +28,13 @@ class Game
     player.set_choice(choice)
   end
 
-  def turn_result
+  def run_result
     computer_choice if player2.name == "Computer"
-    if player1.choice == player2.choice
+    result = rules.turn_result(player1.choice, player2.choice)
+    case result[:player1]
+    when :draw
       "It's a draw! You both chose #{player1.choice_string}"
-    elsif @rules[player1.choice].include?(player2.choice)
+    when :win
       player1.add_win_score
       "#{player1.name} wins; #{player1.choice_string} beats
         #{player2.choice_string}!"
@@ -44,16 +45,20 @@ class Game
     end
   end
 
+  def choice_display(player)
+    player.choice_string
+  end
+
   def switch_players
     @curr_plyr_name = players.reject{ |p| p.name == curr_plyr_name}.first.name
   end
 
   def possible_values_array
-    @rules.keys.map(&:to_s)
+    rules.rules_hash.keys.map(&:to_s)
   end
 
   def possible_values_display
-    @rules.keys.map(&:to_s).map(&:capitalize).join(", ").to_s
+    possible_values_array.map(&:capitalize).join(", ").to_s
   end
 
   def reset_game
@@ -64,7 +69,7 @@ class Game
   private
 
   def computer_choice
-    player2.set_choice(@rules.keys.sample)
+    player2.set_choice(rules.random_sample)
   end
 
   def set_player_name(player, player_name)
