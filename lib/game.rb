@@ -31,21 +31,11 @@ class Game
   def run_result
     computer_choice if player2.name == "Computer"
     result = rules.turn_result(player1.choice, player2.choice)
-    case result[:player1]
-    when :draw
-      "It's a draw! You both chose #{player1.choice_string}"
-    when :win
-      player1.add_win_score
-      "#{player1.name} wins; #{player1.choice_string} beats
-        #{player2.choice_string}!"
-    else
-      player2.add_win_score
-      "#{player2.name} wins; #{player2.choice_string} beats
-        #{player1.choice_string}!"
-    end
+    scores(result)
+    result_text(result)
   end
 
-  def choice_display(player)
+  def choice_str(player)
     player.choice_string
   end
 
@@ -78,6 +68,24 @@ class Game
 
   def computer_opponent(play_against_the_computer)
     play_against_the_computer == "on" ? true : false
+  end
+
+  def scores(result)
+    if result[:player1] != :draw
+      winning_player = result[:player1] == :win ? player1 : player2
+      winning_player.add_win_score
+    end
+  end
+
+  def result_text(result)
+    case result[:player1]
+    when :draw
+      "It's a draw! You both chose #{choice_str(player1)}"
+    when :win
+      "#{player1.name} wins; #{choice_str(player1)} beats #{choice_str(player2)}!"
+    else
+      "#{player2.name} wins; #{choice_str(player2)} beats #{choice_str(player1)}!"
+    end
   end
 
 end

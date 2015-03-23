@@ -10,11 +10,11 @@ class Rules
 
   def turn_result(player_1_choice, player_2_choice)
     if player_1_choice == player_2_choice
-      return {player1: :draw}
+      {player1: :draw}
     elsif rules_hash[player_1_choice].include?(player_2_choice)
-      return {player1: :win}
+      {player1: :win}
     else
-      return {player1: :lose}
+      {player1: :lose}
     end
   end
 

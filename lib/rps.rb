@@ -33,19 +33,17 @@ class Rps < Sinatra::Base
     GAME.enter_choice(GAME.curr_plyr_name, params[:choice])
     if GAME.player2.name == "Computer"
       @result = GAME.run_result
-      @p1_choice = GAME.choice_display(GAME.player1)
-      @p2_choice = GAME.choice_display(GAME.player2)
     elsif GAME.curr_plyr_name == GAME.player1.name
       GAME.switch_players
       redirect '/'
     else
       @result = GAME.run_result
-      @p1_choice = GAME.choice_display(GAME.player1)
-      @p2_choice = GAME.choice_display(GAME.player2)
       GAME.switch_players
     end
     @current_turn = GAME.curr_plyr_name
     @p1_name, @p2_name = GAME.player1.name, GAME.player2.name
+    @p1_choice = GAME.choice_str(GAME.player1)
+    @p2_choice = GAME.choice_str(GAME.player2)
     @p1_score, @p2_score = GAME.player1.score, GAME.player2.score
     erb :index
   end
