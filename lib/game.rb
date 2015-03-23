@@ -1,4 +1,5 @@
 require 'active_support/all'
+require 'player'
 
 class Game
 
@@ -9,8 +10,8 @@ class Game
     @rules = {rock: [:scissors, :lizzard], paper: [:rock, :spock],
       scissors: [:paper, :lizzard], lizzard: [:spock, :paper],
       spock: [:scissors, :rock]}
-    @players = [@player1 = {name: "Player 1", score: 0, choice: nil},
-      @player2 = {name: "Computer", score:0, choice: nil }]
+    @players = [@player1 = Player.new("Player 1"),
+                @player2 = Player.new("Computer")]
   end
 
   def enter_names(player_1_name, player_2_name, play_against_the_computer)
@@ -20,26 +21,26 @@ class Game
       player_2_as_computer == false
     set_player_name(@player1, player_1_name)
     set_player_name(@player2, player_2_name) if player_2_as_computer == false
-    @curr_plyr_name = player1[:name]
+    @curr_plyr_name = player1.name
   end
 
   def enter_choice(player_name, choice)
-    player_object = @players.select{ |p| p[:name] == player_name}.first
-    player_object[:choice] = choice.to_sym
+    player = @players.select{ |p| p.name == player_name}.first
+    player.set_choice(choice)
   end
 
   def turn_result
-    computer_choice if player2[:name] == "Computer"
-    if player1[:choice] == player2[:choice]
-      "It's a draw! You both chose #{choice_display(player1[:choice])}"
-    elsif @rules[player1[:choice]].include?(player2[:choice])
-      player1[:score] += 1
-      "#{player1[:name]} wins; #{choice_display(player1[:choice])} beats
-        #{choice_display(player2[:choice])}!"
+    computer_choice if player2.name == "Computer"
+    if player1.choice == player2.choice
+      "It's a draw! You both chose #{choice_display(player1.choice)}"
+    elsif @rules[player1.choice].include?(player2.choice)
+      player1.add_win_score
+      "#{player1.name} wins; #{choice_display(player1.choice)} beats
+        #{choice_display(player2.choice)}!"
     else
-      player2[:score] += 1
-      "#{player2[:name]} wins; #{choice_display(player2[:choice])} beats
-        #{choice_display(player1[:choice])}!"
+      player2.add_win_score
+      "#{player2.name} wins; #{choice_display(player2.choice)} beats
+        #{choice_display(player1.choice)}!"
     end
   end
 
@@ -52,7 +53,7 @@ class Game
   end
 
   def switch_players
-    @curr_plyr_name = players.reject{ |p| p[:name] == curr_plyr_name}.first[:name]
+    @curr_plyr_name = players.reject{ |p| p.name == curr_plyr_name}.first.name
   end
 
   def possible_values_array
@@ -75,7 +76,7 @@ class Game
   end
 
   def set_player_name(player, player_name)
-    player[:name] = player_name
+    player.set_name(player_name)
   end
 
   def computer_opponent(play_against_the_computer)
