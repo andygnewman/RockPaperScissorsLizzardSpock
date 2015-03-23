@@ -2,8 +2,8 @@ require 'active_support/all'
 
 class Game
 
-  attr_accessor :player1, :player2
-  attr_reader :players, :rules
+  # attr_accessor :player1, :player2
+  attr_reader :players, :rules, :player1, :player2
 
   def initialize
     @rules = {rock: [:scissors, :lizzard], paper: [:rock, :spock],
