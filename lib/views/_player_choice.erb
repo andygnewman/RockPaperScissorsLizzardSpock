@@ -1,4 +1,4 @@
-<%= "#{session[:current_turn]}, please make your selection" %>
+<%= "#{@current_turn}, please make your selection" %>
   <form action='/' method="post">
     <% GAME.possible_values_array.each do |choice| %>
       <input type="image" src="images/<%="#{choice}"%>.png" alt="<%=choice%>"

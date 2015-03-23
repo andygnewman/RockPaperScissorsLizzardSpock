@@ -16,10 +16,12 @@
 
       <a href="/new_game">Reset Game</a><br>
 
-      <p class="result"><%= "#{@p1_name} chose #{@p1_choice}, #{@p2_name} chose #{@p2_choice}" if @p1_choice != nil %></p>
+      <p class="result"><%= "#{@p1_name} chose #{@p1_choice}, #{@p2_name}
+        chose #{@p2_choice}" if @p1_choice != nil %></p>
       <p class="result"><%= @result %></p>
 
-      <p class="scores"><%= "Current Scores: #{@p1_name}: #{@p1_score}  #{@p2_name}: #{@p2_score}" %></p>
+      <p class="scores"><%= "Current Scores: #{@p1_name}: #{@p1_score}
+        #{@p2_name}: #{@p2_score}" %></p>
 
       <p class="error"><%= @error %></p>
 

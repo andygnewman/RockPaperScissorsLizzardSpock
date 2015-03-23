@@ -3,7 +3,7 @@ require 'active_support/all'
 class Game
 
   # attr_accessor :player1, :player2
-  attr_reader :players, :rules, :player1, :player2
+  attr_reader :players, :rules, :player1, :player2, :curr_plyr_name
 
   def initialize
     @rules = {rock: [:scissors, :lizzard], paper: [:rock, :spock],
@@ -20,6 +20,7 @@ class Game
       player_2_as_computer == false
     set_player_name(@player1, player_1_name)
     set_player_name(@player2, player_2_name) if player_2_as_computer == false
+    @curr_plyr_name = player1[:name]
   end
 
   def enter_choice(player_name, choice)
@@ -50,8 +51,8 @@ class Game
     end
   end
 
-  def switch_players(current_player_name)
-    @players.reject{ |p| p[:name] == current_player_name}.first[:name]
+  def switch_players
+    @curr_plyr_name = players.reject{ |p| p[:name] == curr_plyr_name}.first[:name]
   end
 
   def possible_values_array

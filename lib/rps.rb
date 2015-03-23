@@ -21,29 +21,28 @@ class Rps < Sinatra::Base
         session[:error] = error.to_s
         redirect '/error'
       end
-      session[:current_turn] = GAME.player1[:name]
     end
     @error = session[:error] if params[:error]
-    @current_turn = session[:current_turn]
+    @current_turn = GAME.curr_plyr_name
     @p1_name, @p2_name = GAME.player1[:name], GAME.player2[:name]
     @p1_score, @p2_score = GAME.player1[:score], GAME.player2[:score]
     erb :index
   end
 
   post '/?:error?' do
-    GAME.enter_choice(session[:current_turn], params[:choice])
+    GAME.enter_choice(GAME.curr_plyr_name, params[:choice])
     if GAME.player2[:name] == "Computer"
       @result = GAME.turn_result
       @p1_choice, @p2_choice = GAME.choice_display(GAME.player1[:choice]), GAME.choice_display(GAME.player2[:choice])
-    elsif session[:current_turn] == GAME.player1[:name]
-      session[:current_turn] = GAME.switch_players(session[:current_turn])
+    elsif GAME.curr_plyr_name == GAME.player1[:name]
+      GAME.switch_players
       redirect '/'
     else
       @result = GAME.turn_result
       @p1_choice, @p2_choice = GAME.choice_display(GAME.player1[:choice]), GAME.choice_display(GAME.player2[:choice])
-      session[:current_turn] = GAME.switch_players(session[:current_turn])
+      GAME.switch_players
     end
-    @current_turn = session[:current_turn]
+    @current_turn = GAME.curr_plyr_name
     @p1_name, @p2_name = GAME.player1[:name], GAME.player2[:name]
     @p1_score, @p2_score = GAME.player1[:score], GAME.player2[:score]
     erb :index
