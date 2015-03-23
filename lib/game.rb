@@ -18,32 +18,8 @@ class Game
     raise 'You must enter a name for Player 1' if player_1_name == ''
     raise 'You must enter a name for Player 2' if player_2_name == '' &&
       player_2_as_computer == false
-    @player1[:name] = player_1_name
-    @player2[:name] = player_2_name if player_2_as_computer == false
-  end
-
-  def possible_values_display
-    @rules.keys.map(&:to_s).map(&:capitalize).join(", ").to_s
-  end
-
-  def possible_values_array
-    @rules.keys.map(&:to_s)
-  end
-
-  def switch_players(current_player_name)
-    @players.reject{ |p| p[:name] == current_player_name}.first[:name]
-  end
-
-  def computer_choice
-    player2[:choice] = @rules.keys.sample
-  end
-
-  def choice_display(choice_symbol)
-    if choice_symbol == nil
-      "Nothing chosen yet"
-    else
-      choice_symbol.to_s
-    end
+    set_player_name(@player1, player_1_name)
+    set_player_name(@player2, player_2_name) if player_2_as_computer == false
   end
 
   def enter_choice(player_name, choice)
@@ -66,9 +42,39 @@ class Game
     end
   end
 
+  def choice_display(choice_symbol)
+    if choice_symbol == nil
+      "Nothing chosen yet"
+    else
+      choice_symbol.to_s
+    end
+  end
+
+  def switch_players(current_player_name)
+    @players.reject{ |p| p[:name] == current_player_name}.first[:name]
+  end
+
+  def possible_values_array
+    @rules.keys.map(&:to_s)
+  end
+
+  def possible_values_display
+    @rules.keys.map(&:to_s).map(&:capitalize).join(", ").to_s
+  end
+
   def reset_game
     @players = [@player1 = {name: "Player 1", score: 0, choice: nil},
       @player2 = {name: "Computer", score:0, choice: nil }]
+  end
+
+  private
+
+  def computer_choice
+    player2[:choice] = @rules.keys.sample
+  end
+
+  def set_player_name(player, player_name)
+    player[:name] = player_name
   end
 
   def computer_opponent(play_against_the_computer)

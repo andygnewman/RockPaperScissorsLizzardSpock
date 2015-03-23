@@ -1,8 +1,5 @@
-<!-- manages whether to display game choice entry or player name entry -->
 <% if @p1_name != "Player 1" %>
-  <!-- entering choice of rock, paper, scissors, lizzard or spock -->      
   <%= erb :_player_choice %>
 <% else %>
-  <!-- entering player names -->
   <%= erb :_player_registration %>
 <% end %>
