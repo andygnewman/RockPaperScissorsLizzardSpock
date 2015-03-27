@@ -19,7 +19,7 @@ Deployed on heroku [https://rpsls-andy.herokuapp.com/](https://rpsls-andy.heroku
 - Cucumber
 - Capybara
 
-![Andy Newman's Rock Paper Scissors Lizzard Spock game screenshot](https://github.com/andygnewman/RockPaperScissorsLizzardSpock/blob/master/Rock%20Paper%20Scissors%20Lizzard%20Spock%20Screenshot.png)
+![Andy Newman's Rock Paper Scissors Lizzard Spock game screenshot](https://github.com/andygnewman/RockPaperScissorsLizzardSpock/blob/master/rpsls-screenshot.png)
 
 ###To play the game locally
 Clone this repository
