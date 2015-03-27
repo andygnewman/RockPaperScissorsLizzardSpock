@@ -5,6 +5,9 @@
 Solo weekend coding challenge from Makers Academy in which I completed all levels of the challenge, including optional bonus requirements.
 First solo challenge on incorporating browser and server side Ruby utilising the Sinatra framework.
 
+###Play the game on the web
+Deployed on heroku [https://rpsls-andy.herokuapp.com/](https://rpsls-andy.herokuapp.com/)
+
 ###Technology Used
 
 - Ruby
@@ -18,7 +21,8 @@ First solo challenge on incorporating browser and server side Ruby utilising the
 
 ![Andy Newman's Rock Paper Scissors Lizzard Spock game screenshot](https://github.com/andygnewman/RockPaperScissorsLizzardSpock/blob/master/Rock%20Paper%20Scissors%20Lizzard%20Spock%20Screenshot.png)
 
-###To play the game
+###To play the game locally
+Clone this repository
 From command line, within the root of the project directory `$ rackup`. This will start the server.
 Then in browser open [http://localhost:9292](http://localhost:9292).
 
