@@ -3,6 +3,8 @@ require_relative 'game'
 
 class Rps < Sinatra::Base
 
+  set :root, File.dirname(__FILE__)
+
   enable :sessions
 
   GAME = Game.new
