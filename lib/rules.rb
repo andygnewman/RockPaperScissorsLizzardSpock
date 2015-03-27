@@ -3,8 +3,8 @@ class Rules
   attr_reader :rules_hash
 
   def initialize
-    @rules_hash = {rock: [:scissors, :lizzard], paper: [:rock, :spock],
-      scissors: [:paper, :lizzard], lizzard: [:spock, :paper],
+    @rules_hash = {rock: [:scissors, :lizard], paper: [:rock, :spock],
+      scissors: [:paper, :lizard], lizard: [:spock, :paper],
       spock: [:scissors, :rock]}
   end
 
